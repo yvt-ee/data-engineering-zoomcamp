@@ -95,7 +95,7 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 SELECT count(*) 
 FROM public.yellow_taxi_trips
 WHERE TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01'
-  AND TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01'
+  AND TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01';
 
 ```
 
@@ -112,15 +112,10 @@ Tip: For every trip on a single day, we only care about the trip with the longes
 - 2019-09-21
 
 ```
-SELECT pickup_date
-FROM (
-    SELECT 
-        TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') AS pickup_date,
-        SUM(trip_distance) AS total_distance
-    FROM public.yellow_taxi_trips
-    GROUP BY TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD')
-    ORDER BY total_distance DESC
-) AS subquery
+SELECT TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') AS pickup_date
+FROM public.yellow_taxi_trips
+GROUP BY TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD')
+ORDER BY SUM(trip_distance) DESC
 LIMIT 1;
 ```
 
