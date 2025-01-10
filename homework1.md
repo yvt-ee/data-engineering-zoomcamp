@@ -91,6 +91,14 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 - 15859
 - 89009
 
+```
+SELECT count(*) 
+FROM public.yellow_taxi_trips
+WHERE TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01'
+  AND TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01'
+
+```
+
 ## Question 4. Longest trip for each day
 
 Which was the pick up day with the longest trip distance?
