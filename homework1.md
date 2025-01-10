@@ -155,15 +155,15 @@ Note: it's not a typo, it's `tip` , not `trip`
 - Long Island City/Queens Plaza
 
 ```
-SELECT dz."Borough"
+SELECT dz."Zone"
 FROM public.yellow_taxi_trips t
 JOIN zones pz 
 ON t."PULocationID" = pz."LocationID"
 JOIN zones dz 
 ON t."DOLocationID" = dz."LocationID"
 WHERE to_char(t."tpep_pickup_datetime", 'YYYY-MM') = '2021-01' 
-AND pz."Borough" = 'Astoria'
-GROUP BY dz."Borough"
+AND pz."Zone" = 'Astoria'
+GROUP BY dz."Zone"
 ORDER BY SUM(t."tip_amount") DESC
 LIMIT 1;
 ```
