@@ -111,6 +111,18 @@ Tip: For every trip on a single day, we only care about the trip with the longes
 - 2019-09-26
 - 2019-09-21
 
+```
+SELECT pickup_date
+FROM (
+    SELECT 
+        TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') AS pickup_date,
+        SUM(trip_distance) AS total_distance
+    FROM public.yellow_taxi_trips
+    GROUP BY TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD')
+    ORDER BY total_distance DESC
+) AS subquery
+LIMIT 1;
+```
 
 ## Question 5. Three biggest pick up Boroughs
 
