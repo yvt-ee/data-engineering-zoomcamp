@@ -188,7 +188,98 @@ terraform apply
 ```
 
 Paste the output of this command into the homework submission form.
+```
+Liu@mengyuans-MBP terrademo % terraform apply
 
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_bigquery_dataset.demo_dataset will be created
+  + resource "google_bigquery_dataset" "demo_dataset" {
+      + creation_time              = (known after apply)
+      + dataset_id                 = "demo_dataset"
+      + default_collation          = (known after apply)
+      + delete_contents_on_destroy = false
+      + effective_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + etag                       = (known after apply)
+      + id                         = (known after apply)
+      + is_case_insensitive        = (known after apply)
+      + last_modified_time         = (known after apply)
+      + location                   = "US"
+      + max_time_travel_hours      = (known after apply)
+      + project                    = "careful-emitter-432721-f2"
+      + self_link                  = (known after apply)
+      + storage_billing_model      = (known after apply)
+      + terraform_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+
+      + access (known after apply)
+    }
+
+  # google_storage_bucket.demo-buket will be created
+  + resource "google_storage_bucket" "demo-buket" {
+      + effective_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + force_destroy               = true
+      + id                          = (known after apply)
+      + location                    = "US"
+      + name                        = "careful-emitter-432721-f2-terra-bucket"
+      + project                     = (known after apply)
+      + project_number              = (known after apply)
+      + public_access_prevention    = (known after apply)
+      + rpo                         = (known after apply)
+      + self_link                   = (known after apply)
+      + storage_class               = "STANDARD"
+      + terraform_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + uniform_bucket_level_access = (known after apply)
+      + url                         = (known after apply)
+
+      + lifecycle_rule {
+          + action {
+              + type          = "AbortIncompleteMultipartUpload"
+                # (1 unchanged attribute hidden)
+            }
+          + condition {
+              + age                    = 1
+              + matches_prefix         = []
+              + matches_storage_class  = []
+              + matches_suffix         = []
+              + with_state             = (known after apply)
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      + soft_delete_policy (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+google_bigquery_dataset.demo_dataset: Creating...
+google_storage_bucket.demo-buket: Creating...
+google_bigquery_dataset.demo_dataset: Creation complete after 1s [id=projects/careful-emitter-432721-f2/datasets/demo_dataset]
+google_storage_bucket.demo-buket: Creation complete after 2s [id=careful-emitter-432721-f2-terra-bucket]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+```
 
 ## Submitting the solutions
 
