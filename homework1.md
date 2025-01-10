@@ -51,12 +51,12 @@ What is version of the package *wheel* ?
 docker pull python:3.9
 ```
 
-3. Run the container interactively with bash as the entrypoint:
+2. Run the container interactively with bash as the entrypoint:
 ```
 docker run -it --entrypoint bash python:3.9
 ```
 
-5. Inside the container, check the installed Python modules:
+3. Inside the container, check the installed Python modules:
 ```
 pip list
 ```
@@ -95,8 +95,7 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 SELECT count(*) 
 FROM public.yellow_taxi_trips
 WHERE TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01'
-  AND TO_CHAR(tpep_pickup_datetime, 'YYYY-MM-DD') = '2021-01-01';
-
+  AND TO_CHAR(tpep_dropoff_datetime, 'YYYY-MM-DD') = '2021-01-01';
 ```
 
 ## Question 4. Longest trip for each day
@@ -129,7 +128,19 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
-
+```
+SELECT z."Borough"
+FROM public.yellow_taxi_trips t
+JOIN zones z 
+ON t."PULocationID" = z."LocationID"
+WHERE to_char(t."tpep_pickup_datetime", 'YYYY-MM-DD') = '2021-01-01' 
+AND z."Borough" is not null
+AND z."Borough" != 'Unknown'
+GROUP BY z."Borough"
+HAVING SUM(t."fare_amount") > 50000
+ORDER BY SUM(t."fare_amount") DESC
+LIMIT 3;
+```
 
 ## Question 6. Largest tip
 
