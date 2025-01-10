@@ -45,7 +45,6 @@ What is version of the package *wheel* ?
 
 ## Answear
 
-wheel      0.45.1
 
 1. Pull the Python 3.9 Docker image:
 ```
@@ -61,6 +60,9 @@ docker run -it --entrypoint bash python:3.9
 ```
 pip list
 ```
+![image](https://github.com/user-attachments/assets/25a3974f-1648-4633-85d2-58f6e865977f)
+
+wheel      0.45.1
 
 # Prepare Postgres
 
