@@ -105,7 +105,14 @@ SELECT DISTINCT(VendorID)
 FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned`
 WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
 
+```
 
+Filtering by Timestamp Without Using DATE() might cause
+
+BigQuery may scan all partitions (even those not containing the relevant date).
+
+Higher costs and slower performance because it evaluates the condition for all rows, not just the required partition.
+```sql
 -- 10.72GB
 SELECT * FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
 WHERE tpep_pickup_datetime BETWEEN '2019-01-01 08:00:00' AND '2019-01-01 10:00:00';
@@ -120,15 +127,9 @@ WHERE DATE(tpep_pickup_datetime) = '2019-01-01'
   AND tpep_pickup_datetime BETWEEN '2019-01-01 08:00:00' AND '2019-01-01 10:00:00';
 ```
 
-Filtering by Timestamp Without Using DATE() might cause
-
-BigQuery may scan all partitions (even those not containing the relevant date).
-
-Higher costs and slower performance because it evaluates the condition for all rows, not just the required partition.
-
-
 **Look into the partitons**
 
+We can acyurlt see how many rows are falling into which partion
 ```sql
 SELECT DISTINCT(VendorID)
 FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
