@@ -6,6 +6,7 @@ What is data warehouse
 
 BigQuery
 
+
   
 | | OLTP| OLAP| 
 |---|---|---|
@@ -24,7 +25,7 @@ OLAP solution
 Used for reporting and data analysis
 ![image](https://github.com/user-attachments/assets/ee9fc3a7-8e04-419e-b4f2-82c8f71632a0)
 
-### BigQuery
+## BigQuery
 
 * Serverless data warehouse
 
@@ -43,3 +44,38 @@ geospatial analysis
 business intelligence
 
 * BigQuery maximizes flexibility by separating the compute engine that analyzes your data from your storage
+
+### BigQuery Cost
+
+* On demand pricing
+
+1 TB of data processed is $5
+
+* Flat rate pricing
+
+Based on number of pre requested slots. 
+
+100 slots → $2,000/month = 400 TB data processed on demand pricing
+
+### Use BigQuery to load data from buket
+```sql
+-- Creating external table referring to gcs path
+CREATE OR REPLACE EXTERNAL TABLE `zoompcamp2025.zoomcamp1.external_yellow_tripdata`
+OPTIONS (
+  format = 'CSV',
+  uris = ['gs://your-name-kestra/yellow_tripdata_2019-*.csv', 
+          'gs://your-name-kestra/trip data/yellow_tripdata_2020-*.csv']
+);
+
+```
+
+External table's size and role can not be determined in BigQuery cause the data itself is not inside BigQuery
+
+
+### Partition in BQ
+
+```sql
+
+```
+
+Data would be copy from google cloud storage to bigquery storage.
