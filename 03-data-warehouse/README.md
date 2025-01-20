@@ -74,8 +74,63 @@ External table's size and role can not be determined in BigQuery cause the data 
 
 ### Partition in BQ
 
-```sql
+Partitioning in BigQuery is a technique used to improve query performance and reduce query costs by dividing a table into smaller segments (partitions) based on a column’s values.
 
+![image](https://github.com/user-attachments/assets/7eeae184-7770-48ac-b2f2-f41398c1fc39)
+
+```sql
+-- Create a non partitioned table from external table
+CREATE OR REPLACE TABLE zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned AS
+SELECT * FROM zoompcamp2025.zoomcamp1.external_yellow_tripdata;
+
+-- Create a partitioned table from external table
+CREATE OR REPLACE TABLE `zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned`
+PARTITION BY DATE(tpep_pickup_datetime)
+AS
+SELECT * FROM `zoompcamp2025.zoomcamp1.external_yellow_tripdata`;
 ```
 
 Data would be copy from google cloud storage to bigquery storage.
+
+**Impact of partition**
+
+```sql
+-- Scanning 1.6GB of data
+SELECT DISTINCT(VendorID)
+FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
+
+-- Scanning ~106 MB of DATA
+SELECT DISTINCT(VendorID)
+FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned`
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
+
+
+-- 10.72GB
+SELECT * FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
+WHERE tpep_pickup_datetime BETWEEN '2019-01-01 08:00:00' AND '2019-01-01 10:00:00';
+
+-- 23.26MB
+SELECT * FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned`
+WHERE tpep_pickup_datetime BETWEEN '2019-01-01 08:00:00' AND '2019-01-01 10:00:00';
+
+-- 23.26MB
+SELECT * FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned`
+WHERE DATE(tpep_pickup_datetime) = '2019-01-01'
+  AND tpep_pickup_datetime BETWEEN '2019-01-01 08:00:00' AND '2019-01-01 10:00:00';
+```
+
+Filtering by Timestamp Without Using DATE() might cause
+
+BigQuery may scan all partitions (even those not containing the relevant date).
+
+Higher costs and slower performance because it evaluates the condition for all rows, not just the required partition.
+
+
+**Look into the partitons**
+
+```sql
+SELECT DISTINCT(VendorID)
+FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
+```
