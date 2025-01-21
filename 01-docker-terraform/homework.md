@@ -24,8 +24,20 @@ What's the version of `pip` in the image?
 - 24.2.1
 - 23.3.1
 - 23.2.1
+```python
+# Pull the Python 3.12.8 Docker image
+docker pull python:3.12.8
 
+# Run the container interactively with bash as the entrypoint:
+docker run -it --entrypoint bash python:3.12.8
 
+# check the version of `pip`
+pip -V
+
+```
+
+**Correct Answear: 24.3.1**
+  
 ## Question 2. Understanding Docker networking and docker-compose
 
 Given the following `docker-compose.yaml`, what is the `hostname` and `port` that **pgadmin** should use to connect to the postgres database?
@@ -69,6 +81,23 @@ volumes:
 - db:5432
 
 If there are more than one answers, select only one of them
+
+**Correct Answear: db:5432**
+
+
+From pgAdmin (or another container inside the Docker network):
+* Host: db
+* Port: 5432
+* Username: postgres
+* Password: postgres
+* Database: ny_taxi
+  
+From Host Machine (e.g., using psql):
+
+```python
+psql -h localhost -p 5433 -U postgres -d ny_taxi
+```
+
 
 ##  Prepare Postgres
 
