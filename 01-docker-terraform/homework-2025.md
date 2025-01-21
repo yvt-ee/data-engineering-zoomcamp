@@ -113,6 +113,7 @@ You will also need the dataset with zones:
 ```bash
 wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
 ```
+[ingest_data.py](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/01-docker-terraform/ingest_data.py)
 
 Download this data and put it into Postgres.
 ```python
