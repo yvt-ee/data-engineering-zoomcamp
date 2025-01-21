@@ -203,7 +203,7 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 **East Harlem North, East Harlem South, Morningside Heights**
 
 ```sql
-SELECT z."zone", sum(t.total_amount)
+SELECT z."zone"
 FROM public."green_tripdata_2019-10" t
 JOIN public.dim_zones z ON t."PULocationID" = z."locationid"
 WHERE DATE(t.lpep_pickup_datetime) = '2019-10-18'
@@ -263,6 +263,8 @@ Answers:
 - terraform init, terraform run -auto-approve, terraform destroy
 - terraform init, terraform apply -auto-approve, terraform destroy
 - terraform import, terraform apply -y, terraform rm
+
+**Correct Answear: terraform init, terraform apply -auto-approve, terraform destroy**
 
 
 ## Submitting the solutions
