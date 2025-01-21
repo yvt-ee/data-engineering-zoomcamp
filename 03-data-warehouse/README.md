@@ -1,14 +1,15 @@
 
+# Table of contents
 
-Data Warehouse and BigQuery
+- [Data Warehouse and BigQuery](#Data-Warehouse)
 
-Partitioning vs Clustering
+- [Partitioning vs Clustering](#Partitioning-vs-Clustering)
 
-BigQuery-Best Practice
+- [BigQuery-Best Practice](#BigQuery-Best-Practice)
 
-Internals of BigQuery
+- [Internals of BigQuery](#Internals-of-BigQuery)
 
-# Data Warehouse
+## Data Warehouse
 
 **OLAP vs OLTP**
 
