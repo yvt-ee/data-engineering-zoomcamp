@@ -192,6 +192,18 @@ Resource: https://cloud.google.com/bigquery/docs/partitioned-tables
 * Partitioning results in a large number of partitions beyond the limits on partitioned tables
 * Partitioning results in your mutation operations modifying the majority of partitions in the table frequently (for example, every few minutes)
 
+### Automatic reclustering
+
+As data is added to a clustered table
+
+* the newly inserted data can be written to blocks that contain key ranges that overlap with the key ranges in previously written blocks
+* These overlapping keys weaken the sort property of the table
+
+To maintain the performance characteristics of a clustered table
+* BigQuery performs automatic re-clustering in the background to restore the sort property of the table
+* For partitioned tables, clustering is maintained for data within the scope of each partition.
+
+
 
 
 
