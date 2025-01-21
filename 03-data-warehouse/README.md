@@ -135,3 +135,30 @@ SELECT DISTINCT(VendorID)
 FROM `zoompcamp2025.zoomcamp1.yellow_tripdata_non_partitoned`
 WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2019-06-30';
 ```
+
+
+
+### Clustering in BigQuery
+
+Improve cost and query performance
+
+![image](https://github.com/user-attachments/assets/e4a87edc-1740-479f-a080-9d699171277b)
+```sql
+-- Creating a partition and cluster table
+CREATE OR REPLACE TABLE zoompcamp2025.zoomcamp1.yellow_tripdata_partitoned_clustered
+PARTITION BY DATE(tpep_pickup_datetime)
+CLUSTER BY VendorID AS
+SELECT * FROM zoompcamp2025.zoomcamp1.external_yellow_tripdata;
+
+-- Query scans 1.1 GB
+SELECT count(*) as trips
+FROM zoompcamp2025.zoomcamp1.yellow_tripdata_partitioned
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
+  AND VendorID=1;
+
+-- Query scans 864.5 MB
+SELECT count(*) as trips
+FROM zoompcamp2025.zoomcamp1.yellow_tripdata_partitoned_clustered
+WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
+  AND VendorID=1;
+```
