@@ -1,5 +1,5 @@
 
-# Table of contents
+## Table of contents
 
 - [Data Warehouse and BigQuery](#Data-Warehouse)
 
@@ -9,7 +9,7 @@
 
 - [Internals of BigQuery](#Internals-of-BigQuery)
 
-## Data Warehouse
+# Data Warehouse
 
 **OLAP vs OLTP**
 
