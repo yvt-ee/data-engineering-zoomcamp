@@ -1,12 +1,18 @@
-Data Warehouse
-
-OLAP vs OLTP
-
-What is data warehouse
-
-BigQuery
 
 
+Data Warehouse and BigQuery
+
+Partitioning vs Clustering
+
+BigQuery-Best Practice
+
+Internals of BigQuery
+
+# Data Warehouse
+
+**OLAP vs OLTP**
+
+OLAP (Online Analytical Processing) and OLTP (Online Transaction Processing)
   
 | | OLTP| OLAP| 
 |---|---|---|
@@ -59,6 +65,7 @@ OPTIONS (
 
 External table's size and role can not be determined in BigQuery cause the data itself is not inside BigQuery
 
+# Partitioning vs Clustering
 
 ### Partition in BQ
 
@@ -204,6 +211,91 @@ To maintain the performance characteristics of a clustered table
 * For partitioned tables, clustering is maintained for data within the scope of each partition.
 
 
+# BigQuery-Best Practice
+
+**Cost reduction**
+  
+Avoid SELECT *
+
+Price your queries before running them
+
+Use clustered or partitioned tables
+
+Use streaming inserts with caution
+
+Materialize query results in stages
+
+**Query performance**
+
+Filter on partitioned columns
+
+Denormalizing data
+
+Use nested or repeated columns
+
+Use external data sources appropriately
+
+Don't use it, in case u want a high query performance
+
+Reduce data before using a JOIN
+
+Do not treat WITH clauses as prepared statements
+
+Avoid oversharding tables
+
+Avoid JavaScript user-defined functions
+
+Use approximate aggregation functions (HyperLogLog++)
+
+Order Last, for query operations to maximize performance
+
+Optimize your join patterns
+  
+-- As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.
 
 
+# Internals of BigQuery
+
+BigQuery decouples compute (query execution) from storage (data persistence). This design ensures scalability, cost efficiency, and high performance.
+
+### Storage Layer (Colossus)
+* BigQuery stores data in Colossus, Google’s distributed storage system.
+* Columnar storage format: Stores data by columns instead of rows, enabling:
+  * Faster aggregation and filtering.
+  * Compression optimizations for reducing disk I/O.
+* Data is replicated and encrypted for durability and security.
+
+### Compute Layer (Dremel Execution Engine)
+* The Dremel engine is responsible for query execution.
+* Uses massively parallel processing (MPP) to break queries into smaller tasks.
+* Compute resources are allocated dynamically, eliminating the need for provisioning.
+
+### Jupiter Network (High-Speed Interconnect)
+* Jupiter is Google’s high-speed data center network, which enables ultra-fast data transfer between Colossus (storage) and Dremel (compute).
+* This low-latency, high-bandwidth network is a key reason BigQuery performs well at scale.
+
+
+![image](https://github.com/user-attachments/assets/377a3a87-a52b-4485-af60-383ec1295eb4)
+
+
+BigQuery processes queries using a distributed execution tree, which is optimized for parallelism.
+
+
+![image](https://github.com/user-attachments/assets/758923ea-7808-4c81-bfd1-80f4988b161c)
+
+
+![image](https://github.com/user-attachments/assets/3db8d4bc-171a-4bd7-a04e-bb5cf24fa29b)
+
+
+### Why BigQuery is So Fast
+
+Columnar storage: Reads only the necessary columns.
+
+Distributed execution (Dremel): Breaks queries into parallel tasks.
+
+Compute & storage separation: Eliminates resource contention.
+
+Jupiter network: Ultra-fast communication between storage and compute.
+
+Automatic scaling: Dynamically allocates resources.
 
