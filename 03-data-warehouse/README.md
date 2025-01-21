@@ -300,3 +300,22 @@ Jupiter network: Ultra-fast communication between storage and compute.
 
 Automatic scaling: Dynamically allocates resources.
 
+
+# ML in BigQuery
+
+Free when:
+* 10 GB per month of data storage
+
+* 1 TB per month of queries processed
+    
+* ML Create model step: First 10 GB per month is free
+
+![image](https://github.com/user-attachments/assets/b49f5aab-861f-4a92-a8eb-98655f5aef7d)
+
+
+![image](https://github.com/user-attachments/assets/deaca63d-234a-4770-91b0-d854fed5cc6a)
+
+
+![image](https://github.com/user-attachments/assets/4b4bad5b-53dd-44b0-9eae-957611a2cf6e)
+
+
