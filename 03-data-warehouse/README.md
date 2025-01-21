@@ -28,34 +28,22 @@ Used for reporting and data analysis
 ## BigQuery
 
 * Serverless data warehouse
-
-There are no servers to manage or database software to install
-
+  * There are no servers to manage or database software to install
 * Software as well as infrastructure including
-  
-scalability and high-availability
-
+  * scalability and high-availability
 * Built-in features like 
-
-machine learning
-
-geospatial analysis
-
-business intelligence
-
+  * machine learning
+  * geospatial analysis
+  * business intelligence
 * BigQuery maximizes flexibility by separating the compute engine that analyzes your data from your storage
 
 ### BigQuery Cost
 
 * On demand pricing
-
-1 TB of data processed is $5
-
+  * 1 TB of data processed is $5
 * Flat rate pricing
-
-Based on number of pre requested slots. 
-
-100 slots → $2,000/month = 400 TB data processed on demand pricing
+  * Based on number of pre requested slots. 
+  * 100 slots → $2,000/month = 400 TB data processed on demand pricing
 
 ### Use BigQuery to load data from buket
 ```sql
@@ -168,19 +156,12 @@ WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
 **BigQuery partition**
 
 * Time-unit column
-  
 * Ingestion time (_PARTITIONTIME)
-  
 * Integer range partitioning
-  
 * When using Time unit or ingestion time
-  
-Daily (Default)
-
-Hourly
-
-Monthly or yearly
-
+  * Daily (Default)
+  * Hourly
+  * Monthly or yearly
 * Number of partitions limit is 4000
 
 Resource: https://cloud.google.com/bigquery/docs/partitioned-tables
@@ -188,21 +169,13 @@ Resource: https://cloud.google.com/bigquery/docs/partitioned-tables
 **BigQuery Clustering**
 
 * Columns you specify are used to colocate related data
-  
 * Order of the column is important
-  
-* The order of the specified columns determines the sort order of the data.
-  
+* The order of the specified columns determines the sort order of the data. 
 * Clustering improves
-  
-Filter queries
-
-Aggregate queries
-
+  * Filter queries
+  * Aggregate queries
 * Table with data size < 1 GB, don’t show significant improvement with partitioning and clustering
-  
 * You can specify up to four clustering columns
-
 * Clustering columns must be top-level, non-repeated columns
 
 | Clustering | Partitoning | 
@@ -213,6 +186,12 @@ Aggregate queries
  | The cardinality of the number of values in a column or group of columns is large | 
 
 
- 
+**Clustering over paritioning**
+
+* Partitioning results in a small amount of data per partition (approximately less than 1 GB)
+* Partitioning results in a large number of partitions beyond the limits on partitioned tables
+* Partitioning results in your mutation operations modifying the majority of partitions in the table frequently (for example, every few minutes)
+
+
 
 
