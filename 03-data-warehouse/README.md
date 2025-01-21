@@ -162,3 +162,57 @@ FROM zoompcamp2025.zoomcamp1.yellow_tripdata_partitoned_clustered
 WHERE DATE(tpep_pickup_datetime) BETWEEN '2019-06-01' AND '2020-12-31'
   AND VendorID=1;
 ```
+
+### Partitioning vs Clustering
+
+**BigQuery partition**
+
+* Time-unit column
+  
+* Ingestion time (_PARTITIONTIME)
+  
+* Integer range partitioning
+  
+* When using Time unit or ingestion time
+  
+Daily (Default)
+
+Hourly
+
+Monthly or yearly
+
+* Number of partitions limit is 4000
+
+Resource: https://cloud.google.com/bigquery/docs/partitioned-tables
+
+**BigQuery Clustering**
+
+* Columns you specify are used to colocate related data
+  
+* Order of the column is important
+  
+* The order of the specified columns determines the sort order of the data.
+  
+* Clustering improves
+  
+Filter queries
+
+Aggregate queries
+
+* Table with data size < 1 GB, don’t show significant improvement with partitioning and clustering
+  
+* You can specify up to four clustering columns
+
+* Clustering columns must be top-level, non-repeated columns
+
+| Clustering | Partitoning | 
+|---|---|
+ | Cost benefit unknown | Cost known upfront | 
+ | You need more granularity than partitioning alone allows | You need partition-level management. | 
+ | Your queries commonly use filters or aggregation against multiple particular columns | Filter or aggregate on single column | 
+ | The cardinality of the number of values in a column or group of columns is large | 
+
+
+ 
+
+
