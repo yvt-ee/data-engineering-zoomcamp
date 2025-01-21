@@ -92,7 +92,7 @@ From pgAdmin (or another container inside the Docker network):
 * Password: postgres
 * Database: ny_taxi
   
-From Host Machine (e.g., using psql):
+From Host Machine:
 
 ```python
 psql -h localhost -p 5433 -U postgres -d ny_taxi
@@ -115,7 +115,16 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
 ```
 
 Download this data and put it into Postgres.
-
+```python
+python3 ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=green_tripdata_2019-10 \
+  --file_path=/Users/Liu/Desktop/camp/Project1/green_tripdata_2019-10.csv
+```
 You can use the code from the course. It's up to you whether
 you want to use Jupyter or a python script.
 
@@ -136,6 +145,28 @@ Answers:
 - 104,793;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
+**Correct Answear: 104802, 198924, 109603, 27678, 35189**
+
+```sql
+SELECT count(*) AS TripCount,
+case when trip_distance <= 1 then '1'
+     when trip_distance <= 3 then '1-3'
+     when trip_distance <= 7 then '3-7'
+     when trip_distance <= 10 then '7-10'
+else 'over 10'
+end DistanceRange
+FROM public."green_tripdata_2019-10"
+WHERE DATE(lpep_pickup_datetime) >= '2019-10-01'
+AND DATE(lpep_dropoff_datetime) < '2019-11-01'
+GROUP BY case when trip_distance <= 1 then '1'
+     when trip_distance <= 3 then '1-3'
+     when trip_distance <= 7 then '3-7'
+     when trip_distance <= 10 then '7-10'
+else 'over 10'
+end;
+```
+
+
 
 ## Question 4. Longest trip for each day
 
@@ -148,7 +179,14 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-24
 - 2019-10-26
 - 2019-10-31
-
+**Correct Answear: 2019-10-31**
+  
+```sql
+SELECT DATE(lpep_pickup_datetime)
+FROM public."green_tripdata_2019-10"
+order by trip_distance DESC
+limit 1;
+```
 
 ## Question 5. Three biggest pickup zones
 
@@ -162,6 +200,16 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - Morningside Heights, Astoria Park, East Harlem South
 - Bedford, East Harlem North, Astoria Park
 
+**East Harlem North, East Harlem South, Morningside Heights**
+
+```sql
+SELECT z."zone", sum(t.total_amount)
+FROM public."green_tripdata_2019-10" t
+JOIN public.dim_zones z ON t."PULocationID" = z."locationid"
+WHERE DATE(t.lpep_pickup_datetime) = '2019-10-18'
+GROUP BY z."zone"
+HAVING sum(t.total_amount) > 13000;
+```
 
 ## Question 6. Largest tip
 
@@ -178,6 +226,18 @@ We need the name of the zone, not the ID.
 - East Harlem North
 - East Harlem South
 
+**Correct Answear: JFK Airport**
+
+```sql
+SELECT dz."zone"
+FROM public."green_tripdata_2019-10" t
+JOIN public.dim_zones z ON t."PULocationID" = z."locationid"
+JOIN public.dim_zones dz ON t."DOLocationID" = dz."locationid"
+WHERE t.lpep_pickup_datetime LIKE '2019-10%'
+AND z."zone" = 'East Harlem North'
+ORDER BY t.tip_amount DESC
+LIMIT 1;
+```
 
 ## Terraform
 
