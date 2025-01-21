@@ -303,6 +303,8 @@ Automatic scaling: Dynamically allocates resources.
 
 # ML in BigQuery
 
+## Price
+
 Free when:
 * 10 GB per month of data storage
 
@@ -318,4 +320,7 @@ Free when:
 
 ![image](https://github.com/user-attachments/assets/4b4bad5b-53dd-44b0-9eae-957611a2cf6e)
 
+## practice
+
+[tip prediction](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/03-data-warehouse/big_query_ml.sql)
 
