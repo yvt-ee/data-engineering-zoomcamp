@@ -180,6 +180,7 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-24
 - 2019-10-26
 - 2019-10-31
+  
 **Correct Answear: 2019-10-31**
   
 ```sql
