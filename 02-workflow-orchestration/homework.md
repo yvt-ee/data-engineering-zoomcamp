@@ -32,11 +32,17 @@ Complete the Quiz shown below. It’s a set of 6 multiple-choice questions to te
 - 364.7 MB
 - 692.6 MB
 
+**Correct Answer: 128.3MB**
+
+Logs - extract - Outputs
+
 2) What is the value of the variable `file` when the inputs `taxi` is set to `green`, `year` is set to `2020`, and `month` is set to `04` during execution?
 - `{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv` 
 - `green_tripdata_2020-04.csv`
 - `green_tripdata_04_2020.csv`
 - `green_tripdata_2020.csv`
+
+**Correct Answer: `green_tripdata_2020-04.csv`**
 
 3) How many rows are there for the `Yellow` Taxi data for the year 2020?
 - 13,537.299
@@ -44,11 +50,26 @@ Complete the Quiz shown below. It’s a set of 6 multiple-choice questions to te
 - 18,324,219
 - 29,430,127
 
+**Correct Answer: 24,648,499**
+
+```sql
+SELECT count(*), LEFT(filename, 20) AS truncated_filename
+FROM `zoompcamp2025.zoomcamp1.yellow_tripdata` 
+GROUP BY LEFT(filename, 20) 
+```
 4) How many rows are there for the `Green` Taxi data for the year 2020?
 - 5,327,301
 - 936,199
 - 1,734,051
 - 1,342,034
+
+**Correct Answer: 1,734,051**
+
+```sql
+SELECT count(*), LEFT(filename, 19) AS truncated_filename
+FROM `zoompcamp2025.zoomcamp1.green_tripdata` 
+GROUP BY LEFT(filename, 19) 
+```
 
 5) How many rows are there for the `Yellow` Taxi data for March 2021?
 - 1,428,092
@@ -56,12 +77,18 @@ Complete the Quiz shown below. It’s a set of 6 multiple-choice questions to te
 - 1,925,152
 - 2,561,031
 
+**Correct Answer: 1,925,152**
+
+Table`yellow_tripdata_2021_03` - Detail - Rows
+
 6) How would you configure the timezone to New York in a Schedule trigger?
 - Add a `timezone` property set to `EST` in the `Schedule` trigger configuration  
 - Add a `timezone` property set to `America/New_York` in the `Schedule` trigger configuration
 - Add a `timezone` property set to `UTC-5` in the `Schedule` trigger configuration
 - Add a `location` property set to `New_York` in the `Schedule` trigger configuration  
 
+
+**Correct Answer: Add a `timezone` property set to `America/New_York` in the `Schedule` trigger configuration**
 
 ## Submitting the solutions
 
