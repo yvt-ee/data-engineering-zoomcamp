@@ -45,3 +45,8 @@ Data Domain Development
 
 ![image](https://github.com/user-attachments/assets/92df9cd5-112e-485f-80df-cfab61dd33b8)
 
+# Create a dbt project
+
+![image](https://github.com/user-attachments/assets/f12c2756-1670-4cff-aaf9-fa935022b792)
+
+
