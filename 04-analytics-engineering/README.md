@@ -6,8 +6,8 @@
   - [What is analytics engineering?](#What-is-analytics-engineering)
   - [ETL vs ELT](#ETL-vs-ELT)
   - [Data Modeling concepts](#Data-Modeling-concepts)
-- [What is dbt?](#What-is-dbt?)
-What is dbt?
+- [What is dbt?](#What-is-dbt)
+
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
 
