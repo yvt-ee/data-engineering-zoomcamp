@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Data Warehouse and BigQuery](#Data-Warehouse)
+- [Introduction to analytics engineering](#Introduction-to-analytics-engineering)
 
 - [Partitioning vs Clustering](#Partitioning-vs-Clustering)
 
@@ -16,3 +16,9 @@
 
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
+
+Introduction to analytics engineering
+
+What is analytics engineering?
+ETL vs ELT
+Data modeling concepts (fact and dim tables)
