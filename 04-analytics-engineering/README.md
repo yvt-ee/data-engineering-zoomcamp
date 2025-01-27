@@ -17,7 +17,7 @@
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
 
-Introduction to analytics engineering
+# Introduction to analytics engineering
 
 What is analytics engineering?
 ETL vs ELT
