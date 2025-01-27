@@ -1,0 +1,46 @@
+id: 04_gcp_kv
+namespace: zoomcamptest
+
+tasks:
+  - id: gcp_creds
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_CREDS
+    kvType: JSON
+    value: |
+      {
+        "type": "service_account",
+        "project_id": "zoompcamp2025",
+        "private_key_id": "ac788ab470f951ab5a0c39c51a1a9daa00a73208",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2HfiHYhS8iR4T\ncZcCBaNBL78vrDTHLFapR5QzZa35mn0NE4rM1Neq7XPX6kp0gxhMrAQARiVk8J5Q\nk/dnYB3G6HR4h6D9RD1nvLabS2lR2MDPgA3q5iR56HHE/lNwPkIQpYYNnwEajnNu\nRJ1MDbtjjE7b0nPhUv46Vm0jf/zOSU9ykhcPNM+CiUQt+KgXmFPiVQOn1GhbNxIa\nEurRJo7eZuqixrH5Ysfsw1vvRR3G5epCMT5XgFyMCxZgMZ/cmmSahKJyYkDKoBhQ\nHKGFLkwyIAoA5zZKL0t1FEpekANrIK4vNK4Ph9FDSLVG3xS8nL+wFURrWYJrW4Tm\ninCJsjsJAgMBAAECggEAVfTia1/vQqeDQxEfgaxQiEF1fxZMGOAEDUUEHZg127Q/\npq7dGd2x53LI9RWXy9NeYj3ka46wMqrhRk34fVnf5BSueH8njLKrOu3W0Ihw7tkb\n9DRQHVk/ySxdmmmhzz4LZ5kAoygz2Kl4sQiAp7dphUxhoh58ZFMMPFOzkohjtacX\nms7p/cF7Ay0KzAwmtPC2qRKQzD7ON4XyJyWGW1jLORC3wcWJpeaH7/NNPphvjxjE\neJ2NZlwu0MDGlJr4rkiKL5jTsnuVJEKKnE1zc8i84s1ssuYG1hFeyWlTDLuo729u\nVZv5lObHGyIbdFkcO3/X3X1Xn2jptRDcnNOjVipX2wKBgQDaIMjkxdunqT5geyVc\nDRbqXtK0E8Pj5/h+5vG00jRGaxVtdbWZjaVrVWUn4ed4vlxH/XohnwMdds0Y4qPi\ne8tKdKz6ObUiCXhRbhuE9IxJ8N3m1yy43CaTMYpbEhXg6btohxa6Ve/xCAykzh95\nTNq2h/6ELtr8Yra0GNsrUPRbbwKBgQDVvJfAq8e1ozU28EviwY1vvTVA2CjHbyAw\nGeLd/TLsPD/uxx6ZNrvpG2C51gJ8h6jkXte6Zbk78mYp57Cc4Uft2VR0MxIuuXpQ\nuwggqfCFymDKviZhEz5jI0gnEh/z+fzPInKINQ2Moqi6hl/fdf9byVJkP+qFeJ5h\nJ0NOuWZ1BwKBgDTMELRHK/a2IXIK/Kz+QhiyoP+TdSvZ/y0AS2sAIkUVMFeRUUZ8\noZiMT/LKXFO+h+mo8gHnUkK0ecpXOWHdowQ/n4rlovE9J5FWPHT/GGHhWmTAmoOY\nTgH80MdgZklNad5QLHEn0e8eiqjtd3LN5naeDj4CdWD3p8+J4Kroam0jAoGAYI3v\n6AQyFeYC1iy7u1ZAtKe+9Ooxkdarrc8j47DMXlfhcdbWBdTqEqZhjdIWEXefXntR\n7Uyi32fjqy6VZGmI+vPg6RVhM2Zq0SmMxGTA2U/RZgV8hQISfuqjX7MaaDcYc+JV\n5x5AXrXkj07A5MwDbc2GwO723RDeS3lXOKsck+UCgYEApAgFza9zfPWX0l22oAaJ\n5E2Fk8MJX4GDJbuo5JrY92s1VMiVhsMcL13lCiButIiiDaaY3wAQjGd10Lk/QuYM\n1E63OPPszRDlWCUdOVHT9Q1JoD6p6L5NIusCp16rF8UTPxkCqOLiCaby69WmuJXB\n8iHFNvcUxZl52976KhzBo/c=\n-----END PRIVATE KEY-----\n",
+        "client_email": "zoomcamp-811@zoompcamp2025.iam.gserviceaccount.com",
+        "client_id": "115068419514009043248",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/zoomcamp-811%40zoompcamp2025.iam.gserviceaccount.com",
+        "universe_domain": "googleapis.com"
+      }
+
+  - id: gcp_project_id
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_PROJECT_ID
+    kvType: STRING
+    value: zoompcamp2025 # TODO replace with your project id
+
+  - id: gcp_location
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_LOCATION
+    kvType: STRING
+    value: us-west1
+
+  - id: gcp_bucket_name
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_BUCKET_NAME
+    kvType: STRING
+    value: your-name-kestra # TODO make sure it's globally unique!
+
+  - id: gcp_dataset
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_DATASET
+    kvType: STRING
+    value: zoomcamp1
