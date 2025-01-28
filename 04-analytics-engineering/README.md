@@ -52,3 +52,17 @@ Data Domain Development
 ![image](https://github.com/user-attachments/assets/f12c2756-1670-4cff-aaf9-fa935022b792)
 
 # Development of dbt models
+
+![image](https://github.com/user-attachments/assets/5b7ad8a2-b8d2-443c-9524-d85abb004553)
+
+![image](https://github.com/user-attachments/assets/c6511070-4129-4684-bd53-2b6b0a70af64)
+
+![image](https://github.com/user-attachments/assets/1d9f9d60-c1d1-431a-a7c3-4baf1d76ca16)
+
+![image](https://github.com/user-attachments/assets/3b5196ba-39a7-4003-9f99-e1dedd9c37ad)
+
+![image](https://github.com/user-attachments/assets/1222110b-90d3-4c9a-a2f8-745b0f4b2a77)
+
+
+![image](https://github.com/user-attachments/assets/1884dfdb-74b5-4f85-9b01-b447708cf119)
+
