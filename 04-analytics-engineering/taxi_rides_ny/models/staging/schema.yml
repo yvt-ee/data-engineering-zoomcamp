@@ -6,7 +6,6 @@ sources:
     schema: zoomcamp1
 
     tables:
-
       - name: green_tripdata
-      
       - name: yellow_tripdata
+
