@@ -7,6 +7,7 @@
   - [ETL vs ELT](#ETL-vs-ELT)
   - [Data Modeling concepts](#Data-Modeling-concepts)
 - [What is dbt?](#What-is-dbt)
+- [Create a dbt project](#Create-a-dbt-project)
 
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
