@@ -7,6 +7,8 @@
   - [ETL vs ELT](#ETL-vs-ELT)
   - [Data Modeling concepts](#Data-Modeling-concepts)
 - [What is dbt?](#What-is-dbt)
+- [Create a dbt project](#Create-a-dbt-project)
+- [Development of dbt models](#Development-of-dbt-models)
 
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
@@ -49,4 +51,4 @@ Data Domain Development
 
 ![image](https://github.com/user-attachments/assets/f12c2756-1670-4cff-aaf9-fa935022b792)
 
-
+# Development of dbt models
