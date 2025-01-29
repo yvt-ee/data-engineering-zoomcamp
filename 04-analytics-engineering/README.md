@@ -71,3 +71,10 @@ Data Domain Development
 # Marcos
 
 ![image](https://github.com/user-attachments/assets/299de65f-73da-4900-af4f-96e525fd23f6)
+
+
+![image](https://github.com/user-attachments/assets/70b8fe04-2b64-419a-95e4-39efead70df8)
+
+https://hub.getdbt.com/
+
+
