@@ -77,4 +77,5 @@ Data Domain Development
 
 https://hub.getdbt.com/
 
+![image](https://github.com/user-attachments/assets/72f5c396-fb01-4376-aeca-a104bcb9ba2b)
 
