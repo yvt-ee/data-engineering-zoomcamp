@@ -67,9 +67,6 @@ Data Domain Development
 ![image](https://github.com/user-attachments/assets/1884dfdb-74b5-4f85-9b01-b447708cf119)
 
 
-
-# Marcos
-
 ![image](https://github.com/user-attachments/assets/299de65f-73da-4900-af4f-96e525fd23f6)
 
 
@@ -78,4 +75,12 @@ Data Domain Development
 https://hub.getdbt.com/
 
 ![image](https://github.com/user-attachments/assets/72f5c396-fb01-4376-aeca-a104bcb9ba2b)
+
+
+# Testing and Documenting the Project
+
+![image](https://github.com/user-attachments/assets/75dffe75-4557-4c8e-a439-fab28ec9283b)
+
+![image](https://github.com/user-attachments/assets/a3631f0f-7607-40a1-a5e2-d4ae229e6379)
+
 
