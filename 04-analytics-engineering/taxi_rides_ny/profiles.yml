@@ -1,0 +1,10 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: zoompcamp2025
+      dataset: dbt_mliu  # Ensure this is correct
+      location: US        # Change this from `us-west1` to `US`
+      threads: 1
