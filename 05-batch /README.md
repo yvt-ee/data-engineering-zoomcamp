@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [5.1 Introduction](#5.1-Introduction)
+- [5.1 Introduction](#51-Introduction)
   - [Introduction to Batch Processing](#511-introduction-to-batch-processing)
   - [ETL vs ELT](#ETL-vs-ELT)
   - [Data Modeling concepts](#Data-Modeling-concepts)
