@@ -83,4 +83,14 @@ https://hub.getdbt.com/
 
 ![image](https://github.com/user-attachments/assets/a3631f0f-7607-40a1-a5e2-d4ae229e6379)
 
+# Deployment Using dbt Cloud (Alternative A)
+
+![image](https://github.com/user-attachments/assets/f21361b8-d538-4e89-a06d-6e0923c3718e)
+
+![image](https://github.com/user-attachments/assets/172736b1-7258-492e-86b7-f3ddd3764cf0)
+
+![image](https://github.com/user-attachments/assets/683949c7-37a8-4757-8b11-dec563793128)
+
+
+
 
