@@ -9,6 +9,10 @@
 - [What is dbt?](#What-is-dbt)
 - [Create a dbt project](#Create-a-dbt-project)
 - [Development of dbt models](#Development-of-dbt-models)
+- [Testing and Documenting the Project](#Testing-and-Documenting-the-Project)
+- [Deployment Using dbt Cloud](#Deployment-Using-dbt-Cloud)
+- [Visualising the transformed data](#Visualising-the-transformed-data)
+
 
 
  Setting up dbt for using BigQuery (cloud) [dbt_cloud_setup.md](dbt_cloud_setup.md)  
