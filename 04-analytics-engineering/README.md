@@ -52,3 +52,45 @@ Data Domain Development
 ![image](https://github.com/user-attachments/assets/f12c2756-1670-4cff-aaf9-fa935022b792)
 
 # Development of dbt models
+
+![image](https://github.com/user-attachments/assets/5b7ad8a2-b8d2-443c-9524-d85abb004553)
+
+![image](https://github.com/user-attachments/assets/c6511070-4129-4684-bd53-2b6b0a70af64)
+
+![image](https://github.com/user-attachments/assets/1d9f9d60-c1d1-431a-a7c3-4baf1d76ca16)
+
+![image](https://github.com/user-attachments/assets/3b5196ba-39a7-4003-9f99-e1dedd9c37ad)
+
+![image](https://github.com/user-attachments/assets/1222110b-90d3-4c9a-a2f8-745b0f4b2a77)
+
+
+![image](https://github.com/user-attachments/assets/1884dfdb-74b5-4f85-9b01-b447708cf119)
+
+
+![image](https://github.com/user-attachments/assets/299de65f-73da-4900-af4f-96e525fd23f6)
+
+
+![image](https://github.com/user-attachments/assets/70b8fe04-2b64-419a-95e4-39efead70df8)
+
+https://hub.getdbt.com/
+
+![image](https://github.com/user-attachments/assets/72f5c396-fb01-4376-aeca-a104bcb9ba2b)
+
+
+# Testing and Documenting the Project
+
+![image](https://github.com/user-attachments/assets/75dffe75-4557-4c8e-a439-fab28ec9283b)
+
+![image](https://github.com/user-attachments/assets/a3631f0f-7607-40a1-a5e2-d4ae229e6379)
+
+# Deployment Using dbt Cloud (Alternative A)
+
+![image](https://github.com/user-attachments/assets/f21361b8-d538-4e89-a06d-6e0923c3718e)
+
+![image](https://github.com/user-attachments/assets/172736b1-7258-492e-86b7-f3ddd3764cf0)
+
+![image](https://github.com/user-attachments/assets/683949c7-37a8-4757-8b11-dec563793128)
+
+
+
+
