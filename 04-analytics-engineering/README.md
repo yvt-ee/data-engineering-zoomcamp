@@ -92,5 +92,8 @@ https://hub.getdbt.com/
 ![image](https://github.com/user-attachments/assets/683949c7-37a8-4757-8b11-dec563793128)
 
 
+# Visualising the transformed data
 
+Google data studio (Now renamed to Looker studio): https://datastudio.google.com
 
+Metabase: https://metabase.com
