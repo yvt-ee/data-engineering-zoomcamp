@@ -44,7 +44,7 @@ Disadvantages: delay
 
 
 ## 5.1.2 Introduction to Spark
-
+ 
 • What is Spark
 
 • Why do we need it
@@ -55,7 +55,13 @@ When would you use Spark? For the same things as you'd use SQL - but for executi
 
 If you can write this in SQL and use Hive/Presto/Athena/BQ - do it. But not everything can/should be expressed in SQL.
 
+![image](https://github.com/user-attachments/assets/d029187e-463e-4257-b370-76d15809cb73)
+
 Common case - ML algorithms. You can't easily use SQL for most of it.
+
+![image](https://github.com/user-attachments/assets/e99f6e6b-bfed-44ba-8569-835c57b77f3e)
+
+![image](https://github.com/user-attachments/assets/d4253312-a83c-426c-a9e9-4e9b1cf9c02a)
 
 Typical pipeline
 
