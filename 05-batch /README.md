@@ -71,11 +71,16 @@ Raw data -> Data lake -> SQL -> Spark -> Spark for applying the model -> SQL
 
 All orchestrated with Airflow
 
+# 5.2 Installation
+
 Installing Spark (Linux)
 
 • Connecting to an instance on GCP and installing it there
 
-First Look at Spark/PySpark
+
+# 5.3 Spark SQL and DataFrames
+
+## 5.3.1 First Look at Spark/PySpark
 
 • Reading CSV files
 
@@ -84,6 +89,7 @@ First Look at Spark/PySpark
 • Saving data to Parquet for local experiments
 
 • Spark master UI
+
 
 Spark DataFrames
 
