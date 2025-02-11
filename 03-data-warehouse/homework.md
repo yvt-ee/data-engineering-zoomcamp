@@ -28,6 +28,7 @@ OPTIONS (
 ```
 Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table). </br>
 </p>
+
 ```sql
 -- Create a non partitioned table from external table
 CREATE OR REPLACE TABLE zoompcamp2025.zoomcamp1.yellow_tripdata_2024_H1_non_partitoned AS
