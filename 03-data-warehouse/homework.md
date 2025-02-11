@@ -191,6 +191,13 @@ SELECT count(*) from `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned
 
 0 MB because BigQuery leverages metadata instead of scanning the full table.
 
+Metadata in BigQuery includes precomputed table statistics such as:
+
+- Total row count (used for COUNT(*) queries)
+- Column data types and sizes
+- Partition and clustering information
+- Table storage details
+
 ## Submitting the solutions
 
 Form for submitting: https://courses.datatalks.club/de-zoomcamp-2025/homework/hw3
