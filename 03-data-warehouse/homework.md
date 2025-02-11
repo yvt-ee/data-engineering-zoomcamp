@@ -46,6 +46,7 @@ Question 1: What is count of records for the 2024 Yellow Taxi Data?
 ```sql
 SELECT count(1) FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned`
 ```
+
 **Correct Answer: 20,332,093**
 
 ## Question 2:
@@ -89,6 +90,7 @@ SELECT PULocationID FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partit
 SELECT PULocationID, DOLocationID FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned` 
 
 ```
+
 **Correct Answer: BigQuery is a columnar database, and it only scans the specific columns requested in the query. Querying two columns (PULocationID, DOLocationID) requires reading more data than querying one column (PULocationID), leading to a higher estimated number of bytes processed.**
 
 
@@ -105,6 +107,7 @@ SELECT count(1)
 FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned` 
 WHERE fare_amount = 0
 ```
+
 **Correct Answer: 8,333**
 
 
@@ -166,15 +169,27 @@ Where is the data stored in the External Table you created?
 - GCP Bucket
 - Big Table
 
+External Table was not stored in BigQuery, when query, it needs to read the entire file from storage and it's more expensive.
+
+**GCP Bucket**
+
 ## Question 8:
 It is best practice in Big Query to always cluster your data:
 - True
 - False
+  
+While clustering is useful in many cases, it is not always the best practice. Clustering is beneficial only when your queries frequently filter or sort by the clustered column(s). Otherwise, clustering can increase storage costs and may not improve query performance.
 
+**False**
 
 ## (Bonus: Not worth points) Question 9:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
 
+```sql
+SELECT count(*) from `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned`
+```
+
+0 MB because BigQuery leverages metadata instead of scanning the full table.
 
 ## Submitting the solutions
 
