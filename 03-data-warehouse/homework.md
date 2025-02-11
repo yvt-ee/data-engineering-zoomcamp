@@ -101,7 +101,9 @@ How many records have a fare_amount of 0?
 - 8,333
 
 ```sql
-fare_amount
+SELECT count(1)
+FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned` 
+WHERE fare_amount = 0
 ```
 **Correct Answer: 8,333**
 
@@ -113,13 +115,20 @@ What is the best strategy to make an optimized table in Big Query if your query 
 - Cluster on tpep_dropoff_datetime Partition by VendorID
 - Partition by tpep_dropoff_datetime and Partition by VendorID
 
+Since query always filters on tpep_dropoff_datetime, partitioning by this column ensures only relevant partitions are scanned instead of the entire table.
+
+Since query orders results by VendorID, clustering by VendorID ensures sorting operations are more efficient because BigQuery naturally stores VendorID values together.
+
+Aviod scanning unnecessary data, reduce cost.
+
 ```sql
 CREATE OR REPLACE TABLE `zoompcamp2025.zoomp.optimized_yellow_tripdata_2024`
 PARTITION BY DATE(tpep_dropoff_datetime)
 CLUSTER BY VendorID AS
 SELECT * FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned`;
 ```
-**Correct Answer: - Partition by tpep_dropoff_datetime and Cluster on VendorID**
+
+**Correct Answer: Partition by tpep_dropoff_datetime and Cluster on VendorID**
 
 
 ## Question 6:
@@ -135,6 +144,19 @@ Choose the answer which most closely matches.</br>
 - 5.87 MB for non-partitioned table and 0 MB for the partitioned table
 - 310.31 MB for non-partitioned table and 285.64 MB for the partitioned table
 
+```sql
+# 310.24MB
+SELECT DISTINCT VendorID
+FROM `zoompcamp2025.zoomp.yellow_tripdata_2024_H1_non_partitoned`
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+
+# 26.84MB
+SELECT distinct VendorID
+FROM `zoompcamp2025.zoomp.optimized_yellow_tripdata_2024`
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+**Correct Answer: 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table**
 
 ## Question 7: 
 Where is the data stored in the External Table you created?
