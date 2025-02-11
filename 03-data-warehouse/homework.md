@@ -18,8 +18,22 @@ Nothing is fool proof so make sure that all 6 files show in your GCS Bucket befo
 
 <b>BIG QUERY SETUP:</b></br>
 Create an external table using the Yellow Taxi Trip Records. </br>
+```sql
+-- Creating external table referring to gcs path
+CREATE OR REPLACE EXTERNAL TABLE `zoompcamp2025.zoomp.external_yellow_tripdata_2024_H1`
+OPTIONS (
+  format = 'parquet',
+  uris = ['gs://your-name-kestra/yellow_tripdata_2024-*.parquet']
+);
+```
 Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table). </br>
 </p>
+```sql
+-- Create a non partitioned table from external table
+CREATE OR REPLACE TABLE zoompcamp2025.zoomcamp1.yellow_tripdata_2024_H1_non_partitoned AS
+SELECT * FROM zoompcamp2025.zoomcamp1.external_yellow_tripdata_2024_H1;
+```
+
 
 ## Question 1:
 Question 1: What is count of records for the 2024 Yellow Taxi Data?
