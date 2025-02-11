@@ -171,7 +171,7 @@ Where is the data stored in the External Table you created?
 
 External Table was not stored in BigQuery, when query, it needs to read the entire file from storage and it's more expensive.
 
-**GCP Bucket**
+**Correct Answer: GCP Bucket**
 
 ## Question 8:
 It is best practice in Big Query to always cluster your data:
@@ -180,7 +180,7 @@ It is best practice in Big Query to always cluster your data:
   
 While clustering is useful in many cases, it is not always the best practice. Clustering is beneficial only when your queries frequently filter or sort by the clustered column(s). Otherwise, clustering can increase storage costs and may not improve query performance.
 
-**False**
+**Correct Answer: False**
 
 ## (Bonus: Not worth points) Question 9:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
