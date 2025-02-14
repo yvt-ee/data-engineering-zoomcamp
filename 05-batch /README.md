@@ -82,27 +82,36 @@ Installing Spark (Linux)
 
 ## 5.3.1 First Look at Spark/PySpark
 
-smaller partitions been process by instances in Spark Cluster by order.
-![image](https://github.com/user-attachments/assets/cba4b7fa-7220-470e-bcab-75381f79ff1e)
-
 • Reading CSV/Parquet files
 
 • Partitions
+
+smaller partitions been process by instances in Spark Cluster by order.
+
+![image](https://github.com/user-attachments/assets/cba4b7fa-7220-470e-bcab-75381f79ff1e)
 
 • Saving data to Parquet for local experiments
 
 • Spark master UI
 
 
-Spark DataFrames
+
+## 5.3.2 - Spark DataFrames
 
 • Actions vs transformations
+
+![image](https://github.com/user-attachments/assets/777e097a-1c80-492e-8968-1e96bb61303d)
+
+
+![image](https://github.com/user-attachments/assets/4a28e502-13f2-4a3c-8658-3b5401723b46)
 
 • Partitions
 
 • Functions and UDFs
 
-Spark SQL
+## 5.3.3 - Preparing Yellow and Green Taxi Data
+
+## 5.3.4 - Spark SQL
 
 • Temporary tables
 
