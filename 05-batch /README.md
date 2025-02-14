@@ -82,7 +82,10 @@ Installing Spark (Linux)
 
 ## 5.3.1 First Look at Spark/PySpark
 
-• Reading CSV files
+smaller partitions been process by instances in Spark Cluster by order.
+![image](https://github.com/user-attachments/assets/cba4b7fa-7220-470e-bcab-75381f79ff1e)
+
+• Reading CSV/Parquet files
 
 • Partitions
 
