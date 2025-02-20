@@ -122,7 +122,6 @@ Joins in Spark
 • merge sort join
   
 • broadcasting
-  
 
 RDDs
 
@@ -136,9 +135,22 @@ RDDs
 
 • From RDD to DF
 
+# 5.4 Spark Internals
+
+## 5.4.1 - Anatomy of a Spark Cluster
+
 Spark Internals
 
 • driver, master and executors
+
+![image](https://github.com/user-attachments/assets/eb5f63fb-123d-4c97-9a9b-502c8a154bbf)
+
+## 5.4.2 GroupBy in Spark
+
+
+![image](https://github.com/user-attachments/assets/f90b376b-9fb2-4221-a5f8-50ed03123a7e)
+
+![image](https://github.com/user-attachments/assets/5778dd71-cb87-43e5-981a-9f853cd13bb3)
 
 • partitioning + coalesce
 
