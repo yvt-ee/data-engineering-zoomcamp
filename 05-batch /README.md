@@ -147,22 +147,31 @@ Spark Internals
 
 ## 5.4.2 GroupBy in Spark
 
+• How Groupby works internally
+
+• Shuffling
 
 ![image](https://github.com/user-attachments/assets/f90b376b-9fb2-4221-a5f8-50ed03123a7e)
 
 ![image](https://github.com/user-attachments/assets/5778dd71-cb87-43e5-981a-9f853cd13bb3)
 
-• partitioning + coalesce
 
-• shuffling
 
-• group by or not group by?
+## 5.4.3 - Joins in Spark
 
-• broadcasting
+• Join two large tables
 
-Spark and Docker
+• external merge sort algo
 
-• TBD
+• Join one large table and a small table
+
+![image](https://github.com/user-attachments/assets/25ef629d-c77c-4fcb-b91b-5be843f60b11)
+
+![image](https://github.com/user-attachments/assets/faa68880-8d85-41a8-b2e0-47d8a5ec9d3e)
+
+## 5.4.4 - Resilient Distribute Datasets
+
+
 
 Running Spark in the Cloud (GCP)
 
