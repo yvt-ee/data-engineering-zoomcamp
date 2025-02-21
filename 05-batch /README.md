@@ -169,7 +169,25 @@ Spark Internals
 
 ![image](https://github.com/user-attachments/assets/faa68880-8d85-41a8-b2e0-47d8a5ec9d3e)
 
-## 5.4.4 - Resilient Distribute Datasets
+# 5.5 (Optional) Resilient Distributed Datasets
+
+## 5.5.1 Operations on Spark RDDs
+
+
+
+![image](https://github.com/user-attachments/assets/297ce2fb-0889-4945-9425-6f572ff5b2e1)
+
+![image](https://github.com/user-attachments/assets/41c4a8ca-035d-4585-884c-0cb58e496ac7)
+
+
+![image](https://github.com/user-attachments/assets/846ed72e-cf66-48cb-8610-cc9b1013703e)
+
+
+
+## 5.5.2 - (Optional) Spark RDD mapPartition
+
+
+
 
 
 
