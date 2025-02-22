@@ -189,9 +189,9 @@ Spark Internals
 
 
 
+## 5.6 Running Spark in the Cloud
 
-
-Running Spark in the Cloud (GCP)
+# 5.6.1 - Connecting to Google Cloud Storage
 
 • https://cloud.google.com/solutions/spark
 
@@ -201,9 +201,8 @@ Connecting Spark to a DWH
 * 
 * reading from GCP and saving to BG
 
-
-
-1
+## 5.6.2 - Creating a Local Spark Cluster
+https://spark.apache.org/docs/latest/spark-standalone.html
 
 
 
