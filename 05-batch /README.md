@@ -189,9 +189,13 @@ Spark Internals
 
 
 
-## 5.6 Running Spark in the Cloud
+# 5.6 Running Spark in the Cloud
 
-# 5.6.1 - Connecting to Google Cloud Storage
+## 5.6.1 - Connecting to Google Cloud Storage
+
+• Uploading data to GCS
+
+• Connecting spark jobs to GCS
 
 • https://cloud.google.com/solutions/spark
 
@@ -202,16 +206,41 @@ Connecting Spark to a DWH
 * reading from GCP and saving to BG
 
 ## 5.6.2 - Creating a Local Spark Cluster
+
+• Creating the cluster cluster
+• Turning the notebook into a script.
+• Using spark-submit for submitting spark jobs
+
 https://spark.apache.org/docs/latest/spark-standalone.html
 
+jupyter nbconvert --to=script 06_spark_sql.ipynb
 
 
 
+python 06_spark_sql.py \
+＞
+--input_green=data/pq/green/2020/*/ \
+>
+--input_yellow=data/pq/yellow/2020/*/ \
+>
+--output=data/report-2020
 
 
+spark submit
 
 
+URL="spark: //de-zoomcamp. europe-westl-b.c.de-zoomcamp-nytaxi.internal:7077"
+spark-submit \
+  --master="${URL}". \
+  06_spark_sql.py \
+    --input_green=data/pq/green/2021}*/ \
+    --input_yellow=data/pq/yellow/2021/*/ \
+    --output=data/report-2021
 
+## 5.6.3 Setting up a Dataproc Cluster
+• Creating a cluster
+• Runing a soark job with Daraproc
+• Submitting the job with the cloud SDK
 
 
  
