@@ -50,6 +50,7 @@ from {{ source('raw_nyc_tripdata', 'ext_green_taxi' ) }}
 - `select * from myproject.my_nyc_tripdata.ext_green_taxi`
 - `select * from dtc_zoomcamp_2025.raw_nyc_tripdata.green_taxi`
 
+**Correct Answer: `select * from myproject.raw_nyc_tripdata.ext_green_taxi`**
 
 ### Question 2: dbt Variables & Dynamic Models
 
@@ -72,6 +73,7 @@ What would you change to accomplish that in a such way that command line argumen
 - Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ var("days_back", env_var("DAYS_BACK", "30")) }}' DAY`
 - Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ env_var("DAYS_BACK", var("days_back", "30")) }}' DAY`
 
+**Correct Answer: Update the WHERE clause to `pickup_datetime >= CURRENT_DATE - INTERVAL '{{ var("days_back", env_var("DAYS_BACK", "30")) }}' DAY`**
 
 ### Question 3: dbt Data Lineage and Execution
 
@@ -87,6 +89,7 @@ Select the option that does **NOT** apply for materializing `fct_taxi_monthly_zo
 - `dbt run --select +models/core/`
 - `dbt run --select models/staging/+`
 
+**Correct Answer: `dbt run --select models/staging/+`**
 
 ### Question 4: dbt Macros and Jinja
 
@@ -119,11 +122,11 @@ And use on your staging, dim_ and fact_ models as:
 ```
 
 That all being said, regarding macro above, **select all statements that are true to the models using it**:
-- Setting a value for  `DBT_BIGQUERY_TARGET_DATASET` env var is mandatory, or it'll fail to compile
-- Setting a value for `DBT_BIGQUERY_STAGING_DATASET` env var is mandatory, or it'll fail to compile
-- When using `core`, it materializes in the dataset defined in `DBT_BIGQUERY_TARGET_DATASET`
-- When using `stg`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET`
-- When using `staging`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET`
+- Setting a value for  `DBT_BIGQUERY_TARGET_DATASET` env var is mandatory, or it'll fail to compile **Correct**
+- Setting a value for `DBT_BIGQUERY_STAGING_DATASET` env var is mandatory, or it'll fail to compile **Not Correct**
+- When using `core`, it materializes in the dataset defined in `DBT_BIGQUERY_TARGET_DATASET` **Correct**
+- When using `stg`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET` **Correct**
+- When using `staging`, it materializes in the dataset defined in `DBT_BIGQUERY_STAGING_DATASET`, or defaults to `DBT_BIGQUERY_TARGET_DATASET` **Correct**
 
 
 ## Serious SQL
