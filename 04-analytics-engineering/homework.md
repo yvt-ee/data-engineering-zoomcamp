@@ -221,12 +221,31 @@ Now...
 
 For the Trips that **respectively** started from `Newark Airport`, `SoHo`, and `Yorkville East`, in November 2019, what are **dropoff_zones** with the 2nd longest p90 trip_duration ?
 
+```sql
+SELECT 
+    p.*, 
+    z.*,
+    PERCENTILE_CONT(
+        TIMESTAMP_DIFF(p.dropOff_datetime, p.pickup_datetime, SECOND), 0.90
+    ) OVER (
+        PARTITION BY EXTRACT(YEAR FROM p.pickup_datetime), 
+                     EXTRACT(MONTH FROM p.pickup_datetime), 
+                     p.PUlocationID,
+                     p.DOlocationID
+    ) AS p90
+FROM `zoompcamp2025.dbt_mliu.dim_fhv_trips` p
+JOIN `zoompcamp2025.dbt_mliu.dim_zones` z 
+    ON p.DOlocationID = z.locationid
+WHERE EXTRACT(MONTH FROM p.pickup_datetime) = 11
+ORDER BY p90 DESC;
+```
 - LaGuardia Airport, Chinatown, Garment District
 - LaGuardia Airport, Park Slope, Clinton East
 - LaGuardia Airport, Saint Albans, Howard Beach
 - LaGuardia Airport, Rosedale, Bath Beach
 - LaGuardia Airport, Yorkville East, Greenpoint
 
+LaGuardia Airport, Yorkville East, Greenpoint
 
 ## Submitting the solutions
 
