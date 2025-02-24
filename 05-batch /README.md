@@ -239,7 +239,9 @@ spark-submit \
 
 ## 5.6.3 Setting up a Dataproc Cluster
 • Creating a cluster
+
 • Runing a soark job with Daraproc
+
 • Submitting the job with the cloud SDK
 
 
