@@ -57,6 +57,15 @@ monolith
 ![image](https://github.com/user-attachments/assets/fac7b337-9ebc-42f6-a3f7-48a9a213f278)
 
 
+## 6.4-Confluent cloud
+
+
+
+
+
+
+
+
 
 
 
