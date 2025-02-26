@@ -59,7 +59,42 @@ monolith
 
 ## 6.4-Confluent cloud
 
+## 6.5-Kafka producer consumer
 
+## 6.6-Kafka configuration
+
+What is a Kafka Cluster
+
+different machine/nodes running together (zookeeper not there any more)
+
+![image](https://github.com/user-attachments/assets/89038143-e77e-4fff-9cc8-6c3d20de398c)
+
+How Kafka provides reliability
+
+![image](https://github.com/user-attachments/assets/105cbc41-f48b-45bc-b9e4-e7cc3707de9f)
+
+Retention-how long the data will be retained by Kafka
+
+![image](https://github.com/user-attachments/assets/6486c8df-38a1-408c-bfbc-6917d2719ab6)
+
+![image](https://github.com/user-attachments/assets/7378ea6b-10c3-4d25-a922-ab0a98159798)
+
+
+Partitions--what allows Kafka to scale
+
+![image](https://github.com/user-attachments/assets/6348dc97-a50c-4247-aec4-54730a69d81c)
+
+offset-which message to consume
+
+![image](https://github.com/user-attachments/assets/a299a0a6-0323-469d-ad2e-a528cd6d05f4)
+
+When a new consumer connect, the auto offset it gonna define how it reads the message.
+![image](https://github.com/user-attachments/assets/6f8cbd6d-4dd6-4a2c-8c83-4196c5c8b32d)
+
+
+Acknowledgment all
+
+![image](https://github.com/user-attachments/assets/09ae5544-54a3-4c17-8ae1-4dbd0f090f5c)
 
 
 
