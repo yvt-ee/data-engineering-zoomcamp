@@ -96,10 +96,10 @@ Acknowledgment all
 
 ![image](https://github.com/user-attachments/assets/09ae5544-54a3-4c17-8ae1-4dbd0f090f5c)
 
+https://kafka.apache.org/20/documentation.html
 
 
-
-
+6.7-Kafka streams basics
 
 
 
