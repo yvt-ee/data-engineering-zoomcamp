@@ -138,6 +138,7 @@ So data like post code would more likely be stored in global k table
 6.11-Kafka ksqldb & Connect
 
 6.12-Kafka Schema registry
-![image](https://github.com/user-attachments/assets/1659c70f-964e-4201-87f3-e924f29a4b0c)
+![image](https://github.com/user-attachments/assets/cdc05293-46ba-4c43-9c0b-dba1721853c4)
+
 ![image](https://github.com/user-attachments/assets/a47409e3-f42a-4a82-a1b1-7e4a08342d36)
 ![image](https://github.com/user-attachments/assets/8135ccd3-acb0-40be-9584-b7ac93809137)
