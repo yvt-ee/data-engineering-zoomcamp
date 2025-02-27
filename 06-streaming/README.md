@@ -142,3 +142,13 @@ So data like post code would more likely be stored in global k table
 
 ![image](https://github.com/user-attachments/assets/a47409e3-f42a-4a82-a1b1-7e4a08342d36)
 ![image](https://github.com/user-attachments/assets/8135ccd3-acb0-40be-9584-b7ac93809137)
+
+![image](https://github.com/user-attachments/assets/85ba7102-ef5b-4300-8c34-b97ce16dee77)
+
+![image](https://github.com/user-attachments/assets/ad35e1e8-fed2-4b85-93fd-069215ff9e7b)
+
+
+
+
+
+
