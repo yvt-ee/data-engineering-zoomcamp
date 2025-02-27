@@ -101,6 +101,43 @@ https://kafka.apache.org/20/documentation.html
 
 6.7-Kafka streams basics
 
+![image](https://github.com/user-attachments/assets/20424d9d-19f2-400b-befc-bb2fd8e60125)
 
+![image](https://github.com/user-attachments/assets/61468cc9-0d9f-4fe7-9824-b04cdfa69f06)
 
+6.8-Kafka stream join
 
+![image](https://github.com/user-attachments/assets/829ff6be-f646-4a33-b7ec-d03bef65cea5)
+
+6.9-Kafka stream testing
+
+6.10-Kafka stream windowing
+
+shuffling in a distribute system is costly, a global k table instead of a k table, the complete data is avaliable to each node.
+
+Cause the whole table is stored in the node itself, there might be a memory issue or size issue.
+
+So data like post code would more likely be stored in global k table
+
+![image](https://github.com/user-attachments/assets/298cd777-71d3-4833-8b55-5534a35cf81a)
+
+![image](https://github.com/user-attachments/assets/a6425fea-d2f4-49a8-b8c9-8fe109446bbc)
+
+![image](https://github.com/user-attachments/assets/54a49666-7e5a-419c-9d07-89d5629eaf66)
+
+![image](https://github.com/user-attachments/assets/14f06511-4bdb-43f8-8feb-d42785dd62e5)
+
+![image](https://github.com/user-attachments/assets/1dbe6f8b-9b96-4c45-8c85-ad2238bbc611)
+
+![image](https://github.com/user-attachments/assets/ebc61ea1-67bf-49ac-ac43-f15137d1617b)
+
+![image](https://github.com/user-attachments/assets/44d75f30-f680-47d4-84ea-030a3dd38ed0)
+
+![image](https://github.com/user-attachments/assets/0500ab17-ca46-4825-85f4-5aa9da2e1b56)
+
+6.11-Kafka ksqldb & Connect
+
+6.12-Kafka Schema registry
+![image](https://github.com/user-attachments/assets/1659c70f-964e-4201-87f3-e924f29a4b0c)
+![image](https://github.com/user-attachments/assets/a47409e3-f42a-4a82-a1b1-7e4a08342d36)
+![image](https://github.com/user-attachments/assets/8135ccd3-acb0-40be-9584-b7ac93809137)
