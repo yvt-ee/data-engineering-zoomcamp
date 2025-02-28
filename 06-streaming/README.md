@@ -138,6 +138,11 @@ So data like post code would more likely be stored in global k table
 6.11-Kafka ksqldb & Connect
 
 6.12-Kafka Schema registry
+
+Schema - A contract between producer and consumer
+
+Schema Registry -- Schema control, compatibility
+
 ![image](https://github.com/user-attachments/assets/cdc05293-46ba-4c43-9c0b-dba1721853c4)
 
 ![image](https://github.com/user-attachments/assets/a47409e3-f42a-4a82-a1b1-7e4a08342d36)
@@ -146,6 +151,11 @@ So data like post code would more likely be stored in global k table
 ![image](https://github.com/user-attachments/assets/85ba7102-ef5b-4300-8c34-b97ce16dee77)
 
 ![image](https://github.com/user-attachments/assets/ad35e1e8-fed2-4b85-93fd-069215ff9e7b)
+
+6.13 Kafka Streaming with Python
+
+
+
 
 
 
