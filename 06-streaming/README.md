@@ -110,6 +110,9 @@ https://kafka.apache.org/20/documentation.html
 ![image](https://github.com/user-attachments/assets/829ff6be-f646-4a33-b7ec-d03bef65cea5)
 
 6.9-Kafka stream testing
+
+check testing report ```open build/reports/tests/test/index.html```
+
 ![image](https://github.com/user-attachments/assets/26992cfc-975f-4192-939f-99f3146779c8)
 
 6.10-Kafka stream windowing
