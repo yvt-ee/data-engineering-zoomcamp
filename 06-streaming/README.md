@@ -141,6 +141,8 @@ So data like post code would more likely be stored in global k table
 
 6.11-Kafka ksqldb & Connect
 
+Ksqldb is a kafka way of doing SQL qick analysis, can be used as an analytical process, a testing process.
+
 6.12-Kafka Schema registry
 
 Schema - A contract between producer and consumer
