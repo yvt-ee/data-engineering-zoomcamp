@@ -106,6 +106,22 @@ Consider only trips that started on the 15th of October.
 - 125,567
 - 145,567
 
+```python
+df_yellow = spark.read.parquet('data/yellow/2024/10/*')
+
+df_yellow.registerTempTable('yellow_data')
+
+spark.sql("""
+SELECT
+    COUNT(DISTINCT VendorID)
+FROM
+    yellow_data
+WHERE
+    CAST(tpep_pickup_datetime AS DATE) = '2024-10-15'
+""").show()
+```
+
+**Correct Answer: 125,567**
 
 ## Question 4: Longest trip
 
