@@ -27,12 +27,12 @@ spark = SparkSession.builder \
     .appName('test') \
     .getOrCreate()
 
-print(spark.version)
+--print(spark.version)
 
 3.3.2
 ```
 
-
+**Correct Answer: 3.3.2**
 
 > [!NOTE]
 > To install PySpark follow this [guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/05-batch/setup/pyspark.md)
@@ -50,6 +50,48 @@ What is the average size of the Parquet (ending with .parquet extension) Files t
 - 25MB
 - 75MB
 - 100MB
+
+```python
+df = spark.read.parquet('yellow_tripdata_2024-10.parquet')
+
+df.schema
+
+yellow_schema = types.StructType([
+    types.StructField("VendorID", types.IntegerType(), True),
+    types.StructField("tpep_pickup_datetime", types.TimestampType(), True),
+    types.StructField("tpep_dropoff_datetime", types.TimestampType(), True),
+    types.StructField("passenger_count", types.IntegerType(), True),
+    types.StructField("trip_distance", types.DoubleType(), True),
+    types.StructField("RatecodeID", types.IntegerType(), True),
+    types.StructField("store_and_fwd_flag", types.StringType(), True),
+    types.StructField("PULocationID", types.IntegerType(), True),
+    types.StructField("DOLocationID", types.IntegerType(), True),
+    types.StructField("payment_type", types.IntegerType(), True),
+    types.StructField("fare_amount", types.DoubleType(), True),
+    types.StructField("extra", types.DoubleType(), True),
+    types.StructField("mta_tax", types.DoubleType(), True),
+    types.StructField("tip_amount", types.DoubleType(), True),
+    types.StructField("tolls_amount", types.DoubleType(), True),
+    types.StructField("improvement_surcharge", types.DoubleType(), True),
+    types.StructField("total_amount", types.DoubleType(), True),
+    types.StructField("congestion_surcharge", types.DoubleType(), True)
+])
+
+df = spark.read \
+    .option("header", "true") \
+    .schema(yellow_schema) \
+    .csv('fhvhv_tripdata_2021-01.csv')
+
+df = spark.read.schema(yellow_schema).parquet('yellow_tripdata_2024-10.parquet')
+df = df.repartition(4)
+df.write.parquet('yellow/2024/10/')
+
+```
+```
+ls -lh yellow/2024/10/
+--25MB
+```
+**Correct Answer: 25MB**
 
 
 ## Question 3: Count records 
