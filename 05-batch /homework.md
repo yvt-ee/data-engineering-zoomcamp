@@ -85,12 +85,13 @@ df = spark.read \
 df = spark.read.schema(yellow_schema).parquet('yellow_tripdata_2024-10.parquet')
 df = df.repartition(4)
 df.write.parquet('yellow/2024/10/')
+```
 
-```
-```
+```bash
 ls -lh yellow/2024/10/
 --25MB
 ```
+
 **Correct Answer: 25MB**
 
 
