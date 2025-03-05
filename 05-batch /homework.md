@@ -17,6 +17,22 @@ wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-10.par
 - Execute spark.version.
 
 What's the output?
+```python
+import pyspark
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .master("local[*]") \
+    .appName('test') \
+    .getOrCreate()
+
+print(spark.version)
+
+3.3.2
+```
+
+
 
 > [!NOTE]
 > To install PySpark follow this [guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/05-batch/setup/pyspark.md)
