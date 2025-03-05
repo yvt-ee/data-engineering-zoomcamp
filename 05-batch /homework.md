@@ -136,13 +136,15 @@ What is the length of the longest trip in the dataset in hours?
 ```python
 spark.sql("""
 SELECT
-    CAST(tpep_dropoff_datetime - tpep_pickup_datetime AS hour)
+    (unix_timestamp(tpep_dropoff_datetime) - unix_timestamp(tpep_pickup_datetime)) / 3600 AS trip_duration_hours
 FROM
     yellow_data
 WHERE
     trip_distance = (SELECT MAX(trip_distance) from yellow_data)
 """).show()
 ```
+
+**Correct Answer: 162**
 
 ## Question 5: User Interface
 
@@ -153,7 +155,7 @@ Spark’s User Interface which shows the application's dashboard runs on which l
 - 4040
 - 8080
 
-
+**Correct Answer: 4040**
 
 ## Question 6: Least frequent pickup location zone
 
@@ -169,6 +171,22 @@ Using the zone lookup data and the Yellow October 2024 data, what is the name of
 - Arden Heights
 - Rikers Island
 - Jamaica Bay
+
+```python
+df_zone = spark.read.option("header", "true").csv('taxi_zone_lookup.csv')
+
+df_zone.registerTempTable('zone')  
+
+spark.sql("""
+SELECT z.Zone, count(1) AS num_trips
+FROM yellow_data y
+Left JOIN zone z ON z.LocationID = y.PULocationID
+GROUP BY z.Zone
+ORDER BY num_trips ASC
+Limit 1;
+""").show()  
+```
+**Correct Answer: Governor's Island/Ellis Island/Liberty Island**
 
 
 ## Submitting the solutions
