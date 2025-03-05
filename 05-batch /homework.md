@@ -133,6 +133,17 @@ What is the length of the longest trip in the dataset in hours?
 - 182
 
 
+```python
+spark.sql("""
+SELECT
+    CAST(tpep_dropoff_datetime - tpep_pickup_datetime AS hour)
+FROM
+    yellow_data
+WHERE
+    trip_distance = (SELECT MAX(trip_distance) from yellow_data)
+""").show()
+```
+
 ## Question 5: User Interface
 
 Spark’s User Interface which shows the application's dashboard runs on which local port?
