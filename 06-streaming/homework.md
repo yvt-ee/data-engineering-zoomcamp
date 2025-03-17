@@ -146,7 +146,9 @@ producer.bootstrap_connected()
 
 Provided that you can connect to the server, what's the output
 of the last command?
-
+```python
+True
+```
 ## Question 4: Sending the Trip Data
 
 Now we need to send the data to the `green-trips` topic
