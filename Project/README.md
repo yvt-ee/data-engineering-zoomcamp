@@ -9,5 +9,7 @@ data ingest -> big query -> dtb data transform -> visulization
 
 Configure Kestra
 
-cd 02-workflow-orchestration/
+```python
+cd /Users/Liu/Desktop/camp/Project/docker
 docker compose up -d
+```
