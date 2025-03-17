@@ -193,6 +193,14 @@ took = t1 - t0
 
 How much time did it take to send the entire dataset and flush? 
 
+[kafka_produce](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/06-streaming/kafka_produce.ipynb)
+
+24.77s
+
+check if the data loaded:
+```python
+docker exec -it 1544022a77cc rpk topic consume green-trips --brokers=localhost:9092
+```
 
 ## Question 5: Build a Sessionization Window (2 points)
 
@@ -204,6 +212,33 @@ Now we have the data in the Kafka stream. It's time to process it.
 * Use `lpep_dropoff_datetime` time as your watermark with a 5 second tolerance
 * Which pickup and drop off locations have the longest unbroken streak of taxi trips?
 
+1. [session_job.py](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/06-streaming/session_job.py)
+
+2. Copy session_job.py to Flink JobManager
+```
+docker cp session_job.py flink-jobmanager:/opt/flink/session_job.py
+```
+3. Ensure PostgreSQL Table Exists
+```
+docker exec -it postgres psql -U postgres
+```
+
+```
+CREATE TABLE IF NOT EXISTS longest_trip_streaks (
+    PULocationID INT,
+    DOLocationID INT,
+    session_start TIMESTAMP,
+    session_end TIMESTAMP,
+    duration BIGINT,
+    PRIMARY KEY (PULocationID, DOLocationID, session_start)
+);
+```
+
+
+4. Submit the PyFlink Job
+```
+docker exec -it flink-jobmanager flink run -py /opt/flink/session_job.py
+```
 
 ## Submitting the solutions
 
