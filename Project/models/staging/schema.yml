@@ -1,0 +1,13 @@
+
+version: 2
+
+sources:
+  - name: staging
+    database: "{{ env_var('DBT_DATABASE', 'zoompcamp2025') }}"
+    schema: "{{ env_var('DBT_SCHEMA', 'SeattlePetLicenses') }}"
+
+    tables:
+      - name: pet_licensesdata
+
+models:
+    - name: stg_pet_licensesdata
