@@ -123,6 +123,8 @@ Use looker to read from bigquery database, build a datadashboard to tablk about:
 
 - Under which location(zipcode) has the most licensed pet?
 
+Link: https://lookerstudio.google.com/s/pw3ute7WaO8
+
 [Seattle_Pet_Licenses.pdf](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/Seattle_Pet_Licenses.pdf)
 
 ### How to Run the Project
