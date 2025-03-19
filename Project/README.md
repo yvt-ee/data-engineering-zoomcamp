@@ -1,7 +1,7 @@
 
-## Course Project
+# Course Project
 
-### Problem statement
+## Problem statement
 
 The **Seattle Pet Licenses dataset** contains records of pet licenses issued in the city, including details about pet types, breeds, and locations. However, raw data alone is not enough for meaningful insights. Manually processing this dataset can be time-consuming, and without proper data management, tracking trends in pet ownership, license renewals, and compliance becomes difficult.
 
@@ -9,23 +9,46 @@ This project aims to automate the end-to-end data pipeline to process the datase
 
 Dataset: [Seattle Pet Licenses data](https://data.seattle.gov/City-Administration/Seattle-Pet-Licenses/jguv-t9rb/about_data)
 
-### Datapipeline design:
+## Datapipeline design:
+
+The data pipeline follows a structured workflow to ensure efficient data ingestion, transformation, and storage.
 
 ![image](https://github.com/user-attachments/assets/4112d870-2f02-4b3d-9925-0861cff232aa)
 
 **Before Start**
 
-use terraform to configure GCP: [terraform](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/terraform)
+Terraform is used to configure GCP services including Cloud Storage and BigQuery: [terraform](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/terraform)
 
-use docker to compose kestra: [docker-compose.yml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/docker-compose.yml)
+Docker is used to deploy Kestra for workflow orchestration: [docker-compose.yml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/docker-compose.yml)
 
-**Extract & Load**
+### Extract&Load
+Usring Kestra workfow to condeuct extract and load: 
+
+[gcp_pet_scheduled.yaml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/gcp_pet_scheduled.yaml)
+
+**Extract**
 
 Using Kestra to extract data from the source.
 
-Using Kestra to put the data to datalake-GCP cloud storage, creat external table in bigquery. Set is as a schedualed job, run every month. [gcp_pet_scheduled.yaml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/gcp_pet_scheduled.yaml)
+The pipeline fetches pet license data from the Seattle Open Data API and processes it using Python.
 
-Tables are partitioned by License Issue Date when created:
+- Pagination Handling – Fetches data in batches of 1,000 rows to avoid API rate limits.
+- Parquet Format – Saves data in Parquet, an optimized format for analytics and storage.
+- Timestamp Conversion – Converts update_time to Pacific Time (PST) for consistency.
+- Date Handling – Extracts year, month, day from license_issue_date for partitioning.
+- Column Renaming – Standardizes column names for clarity.
+
+**Load**
+
+Using Kestra to put the data to datalake-GCP cloud storage, creat external table in bigquery. Set is as a schedualed job, run every month. 
+
+1. Links directly to the Parquet file in GCS to allow querying without duplication.
+   
+Reduces storage costs by leveraging external tables.
+
+2. Loads the dataset from the external table into a structured partitioned table.
+   
+Table are partitioned by license_issue_date for optimized querying.
 
 ```python
   - id: bq_yellow_replace
@@ -51,8 +74,15 @@ Tables are partitioned by License Issue Date when created:
             DATE(PARSE_DATE('%Y-%m-%d', CONCAT(year, '-', month, '-', day))) AS license_issue_date
           FROM `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}`;
 ```
+Automation & Scheduling
+```python
+triggers:
+  - id: pet_licenses_schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 2 10 * *"
+```
 
-**Tranform**
+### Tranform
 
 We use dbt to clean and normalize pet licensing data, ensuring consistency in license number. Additionally, dbt helps create aggregated tables for faster query performance in Looker. [dbt](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/dbt)
 
@@ -109,7 +139,7 @@ animal_s_name, species, primary_breed, secondary_breed, zip_code
 This removes redundant or raw data, improving query performance.
 
 
-**Visulization**
+### Visulization
 
 Use looker to read from bigquery database, build a datadashboard to tablk about: 
 
@@ -127,7 +157,7 @@ Link: https://lookerstudio.google.com/s/pw3ute7WaO8
 
 [Seattle_Pet_Licenses.pdf](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/Seattle_Pet_Licenses.pdf)
 
-### How to Run the Project
+## How to Run the Project
 
 1. Setup GCP Infrastructure
 ```
