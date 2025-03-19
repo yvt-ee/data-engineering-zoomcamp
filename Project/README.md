@@ -25,7 +25,7 @@ Using Kestra to extract data from the source.
 
 Using Kestra to put the data to datalake-GCP cloud storage, creat external table in bigquery. Set is as a schedualed job, run every month. [gcp_pet_scheduled.yaml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/gcp_pet_scheduled.yaml)
 
-Tables are partitioned by License Issue Date:
+Tables are partitioned by License Issue Date when created:
 
 ```python
   - id: bq_yellow_replace
@@ -55,6 +55,59 @@ Tables are partitioned by License Issue Date:
 **Tranform**
 
 We use dbt to clean and normalize pet licensing data, ensuring consistency in license number. Additionally, dbt helps create aggregated tables for faster query performance in Looker. [dbt](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/dbt)
+
+1. Removing Duplicate License Entries
+   
+The dataset may contain duplicate records for the same license_number on the same license_issue_date.
+
+To handle this, we use row_number() over(partition by license_number, license_issue_date order by update_time desc) to rank records within each partition.
+
+We keep only the latest record (rn = 1), ensuring that only the most recent update is retained.
+
+2. Converting Timestamp to Pacific Time (PST)
+   
+The update_time field is stored in UTC or an unspecified timezone.
+
+Using DATETIME(TIMESTAMP(update_time), "America/Los_Angeles") AS update_time_pst, we convert it to Pacific Standard Time (PST) for consistency with Seattle's timezone.
+
+3. Ensuring license_issue_date is a Valid Date
+   
+The dataset might have inconsistencies in date formatting.
+
+To prevent errors, we use SAFE_CAST(license_issue_date AS DATE) to ensure this column is a proper DATE type.
+
+4. Extracting Year, Month, and Day for Easier Querying
+   
+Instead of repeatedly extracting these values in Looker or SQL queries, we precompute them:
+
+EXTRACT(YEAR FROM SAFE_CAST(license_issue_date AS DATE)) AS year
+
+EXTRACT(MONTH FROM SAFE_CAST(license_issue_date AS DATE)) AS month
+
+EXTRACT(DAY FROM SAFE_CAST(license_issue_date AS DATE)) AS day
+
+5. Standardizing license_number to Uppercase
+   
+Since license numbers may have inconsistent casing, we convert them to uppercase using:
+
+UPPER(license_number) AS license_number
+
+This ensures that ABC123 and abc123 are treated as the same entry.
+
+6. Keeping Only Relevant Columns
+   
+The final dataset includes only the necessary fields:
+
+update_time_pst (Converted timestamp)
+
+license_issue_date, year, month, day
+
+license_number (standardized)
+
+animal_s_name, species, primary_breed, secondary_breed, zip_code
+
+This removes redundant or raw data, improving query performance.
+
 
 **Visulization**
 
