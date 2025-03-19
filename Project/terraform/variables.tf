@@ -1,52 +1,41 @@
-locals {
-  data_lake_bucket = "data_lake"
+variable "credentials" {
+  description = "My Credentials"
+  default     = "<Path to your Service Account json file>"
+  #ex: if you have a directory where this file is called keys with your service account json file
+  #saved there as my-creds.json you could use default = "./keys/my-creds.json"
 }
 
+
 variable "project" {
-  description = "Your GCP Project ID"
+  description = "Project"
+  default     = "Zoompcamp2025"
 }
 
 variable "region" {
-  description = "Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"
-  default = "europe-west1"
-  type = string
+  description = "Region"
+  #Update the below to your desired region
+  default     = "us-west1"
 }
 
-variable "storage_class" {
-  description = "Storage class type for your bucket. Check official docs for more info."
-  default = "STANDARD"
+variable "location" {
+  description = "Project Location"
+  #Update the below to your desired location
+  default     = "US"
 }
 
-variable "BQ_DATASET" {
-  description = "BigQuery Dataset that raw data (from GCS) will be written to"
-  type = string
-  default = "gh_archive_all"
+variable "bq_dataset_name" {
+  description = "My BigQuery Dataset Name"
+  #Update the below to what you want your dataset to be called
+  default     = "SeattlePetLicenses"
 }
 
-/* variable "composer_name" {
-  description = "Name for the Cloud Composer / Airflow service in GCP"
-  type = string
-  default = "gh-airflow"
+variable "gcs_bucket_name" {
+  description = "My Storage Bucket Name"
+  #Update the below to a unique bucket name
+  default     = "seattle-pet-licenses-kestra"
 }
 
-variable "composer_image" {
-  description = "Image to be used for Composer/Airflow"
-  type = string
-  default = "composer-2.0.7-airflow-2.2.3"
+variable "gcs_storage_class" {
+  description = "Bucket Storage Class"
+  default     = "STANDARD"
 }
-
-variable "service_account" {
-  description = "Service account to use for setting up GCP"
-  type = string
-  default = "gh-archive-user@gh-archive-345218.iam.gserviceaccount.com"
-} */
-# Transfer service
-# variable "access_key_id" {
-#   description = "AWS access key"
-#   type = string
-# }
-
-# variable "aws_secret_key" {
-#   description = "AWS secret key"
-#   type = string
-# }
