@@ -11,12 +11,10 @@ Dataset: [Seattle Pet Licenses data](https://data.seattle.gov/City-Administratio
 
 ### Datapipeline design:
 
-
 ![image](https://github.com/user-attachments/assets/4112d870-2f02-4b3d-9925-0861cff232aa)
 
+**Before Start**
 
-
-Before Start: 
 use terraform to configure GCP: [terraform](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/terraform)
 
 use docker to compose kestra: [docker-compose.yml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/docker-compose.yml)
