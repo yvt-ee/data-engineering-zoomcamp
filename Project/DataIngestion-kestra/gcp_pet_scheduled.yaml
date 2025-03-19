@@ -1,7 +1,6 @@
 id: gcp_pet_scheduled
 namespace: zoomcamp-project
 
-
 variables:
   file: "seattle_pet_licenses_{{ now() | date('MM-YY') }}.parquet"
   gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/{{vars.file}}"
@@ -24,7 +23,6 @@ tasks:
     script: |
       import pandas as pd
       import requests
-
 
       # Base API URL
       base_url = "https://data.seattle.gov/resource/jguv-t9rb.json"
@@ -60,20 +58,27 @@ tasks:
           "secondary_breed": "Secondary Breed",
           "zip_code": "ZIP Code"
       }
-
       df = df.rename(columns=column_mapping)
-      df["License Number"] = df["License Number"].astype(str)
+
+      # Convert License Issue Date to datetime with error handling
       df["License Issue Date"] = pd.to_datetime(df["License Issue Date"], errors="coerce")
-      df["License Issue Date"] = df["License Issue Date"].astype('int64') // 10**9
 
+      # Extract day, month, year as strings
+      df["year"] = df["License Issue Date"].dt.year.astype(str)
+      df["month"] = df["License Issue Date"].dt.month.astype(str)
+      df["day"] = df["License Issue Date"].dt.day.astype(str)
 
-      df.to_parquet("seattle_pet_licenses.parquet", index=False)
+      # Drop the original License Issue Date before saving
+      df.drop(columns=["License Issue Date"], inplace=True)
+
+      # Save the DataFrame as Parquet with day, month, and year as separate columns
+      df.to_parquet("seattle_pet_licenses.parquet", index=False, engine="pyarrow")
+
 
   - id: upload_to_gcs
     type: io.kestra.plugin.gcp.gcs.Upload
     from: "{{ outputs.extract_and_convert.outputFiles['seattle_pet_licenses.parquet'] }}"
     to: "{{render(vars.gcs_file)}}"
-
 
   - id: bq_pet_licenses
     type: io.kestra.plugin.gcp.bigquery.Query
@@ -81,30 +86,32 @@ tasks:
           CREATE TABLE IF NOT EXISTS `{{kv('GCP_PROJECT_ID')}}.{{kv('GCP_DATASET')}}.pet_licensesdata`
           (
               update_time TIMESTAMP OPTIONS (description = 'The date and time when the database updated'),
-              filename STRING OPTIONS (description = 'The source filename from which the data was loaded'),      
-              license_issue_date TIMESTAMP OPTIONS (description = 'The date and time the license was issued'),  
+              filename STRING OPTIONS (description = 'The source filename from which the data was loaded'),
+              year STRING OPTIONS (description = 'Year of the license issue date'),
+              month STRING OPTIONS (description = 'Month of the license issue date'),
+              day STRING OPTIONS (description = 'Day of the license issue date'),
               license_number STRING OPTIONS (description = 'Pet\'s license number'),
               animal_s_name STRING OPTIONS (description = 'Pet\'s name'),
               species STRING OPTIONS (description = 'Pet\'s species'),
               primary_breed STRING OPTIONS (description = 'Pet\'s primary breed'),
               secondary_breed STRING OPTIONS (description = 'Pet\'s secondary breed'),
               zip_code STRING OPTIONS (description = 'Pet\'s location zip code')
-          )
-          PARTITION BY DATE(license_issue_date);
-
+          );
 
   - id: bq_yellow_table_ext
     type: io.kestra.plugin.gcp.bigquery.Query
     sql: |
           CREATE OR REPLACE EXTERNAL TABLE `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}_ext`
           (
-              license_issue_date TIMESTAMP OPTIONS (description = 'The date and time the license was issued'),  
-              license_number STRING OPTIONS (description = 'Pet\'s license number'),
-              animal_s_name STRING OPTIONS (description = 'Pet\'s name'),
-              species STRING OPTIONS (description = 'Pet\'s species'),
-              primary_breed STRING OPTIONS (description = 'Pet\'s primary breed'),
-              secondary_breed STRING OPTIONS (description = 'Pet\'s secondary breed'),
-              zip_code STRING OPTIONS (description = 'Pet\'s location zip code')
+              year STRING,
+              month STRING,
+              day STRING,
+              license_number STRING,
+              animal_s_name STRING,
+              species STRING,
+              primary_breed STRING,
+              secondary_breed STRING,
+              zip_code STRING
           )
           OPTIONS (
               format = 'Parquet',
@@ -119,7 +126,8 @@ tasks:
           SELECT
             CURRENT_TIMESTAMP() AS update_time,
             "seattle_pet_licenses_{{ now() | date('MM-YY') }}.parquet" AS filename,
-            *
+            *,
+            DATE(PARSE_DATE('%Y-%m-%d', CONCAT(year, '-', month, '-', day))) AS license_issue_date
           FROM `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}_ext`;
 
   - id: bq_yellow_replace
@@ -128,13 +136,22 @@ tasks:
           DROP TABLE IF EXISTS `{{kv('GCP_PROJECT_ID')}}.{{kv('GCP_DATASET')}}.pet_licensesdata`;
 
           CREATE TABLE `{{kv('GCP_PROJECT_ID')}}.{{kv('GCP_DATASET')}}.pet_licensesdata`
-          PARTITION BY DATE(license_issue_date)
+          PARTITION BY license_issue_date
           AS
           SELECT
-            *
+            update_time,
+            filename,
+            year,
+            month,
+            day,
+            license_number,
+            animal_s_name,
+            species,
+            primary_breed,
+            secondary_breed,
+            zip_code,
+            DATE(PARSE_DATE('%Y-%m-%d', CONCAT(year, '-', month, '-', day))) AS license_issue_date
           FROM `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}`;
-
-
 
   - id: purge_files
     type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
