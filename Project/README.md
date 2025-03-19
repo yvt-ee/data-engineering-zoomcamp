@@ -82,7 +82,7 @@ triggers:
     cron: "0 2 10 * *"
 ```
 
-### Tranform
+### Transform
 
 We use dbt to clean and normalize pet licensing data, ensuring consistency in license number. Additionally, dbt helps create aggregated tables for faster query performance in Looker. [dbt](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/dbt)
 
