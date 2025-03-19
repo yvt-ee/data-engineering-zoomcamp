@@ -56,11 +56,47 @@ Tables are partitioned by License Issue Date:
 
 **Tranform**
 
-Using dbt to conduct data transformation. [dbt](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/dbt)
+We use dbt to clean and normalize pet licensing data, ensuring consistency in license number. Additionally, dbt helps create aggregated tables for faster query performance in Looker. [dbt](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/dbt)
 
 **Visulization**
 
-Use looker to read from bigquery database, build a datadashboard.
+Use looker to read from bigquery database, build a datadashboard to tablk about: 
+
+- How are pet licenses distributed across different species? 
+
+- What is the trend in pet license registrations over year?
+
+- What is the monthly growth trend in pet licenses?
+
+- What is the most popular pet's name?
+
+- Under which location(zipcode) has the most licensed pet?
 
 [Seattle_Pet_Licenses.pdf](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/Seattle_Pet_Licenses.pdf)
+
+### How to Run the Project
+
+1. Setup GCP Infrastructure
+```
+cd terraform
+terraform init
+terraform apply
+```
+
+2. Deploy Kestra Locally
+```
+cd DataIngestion-kestra
+docker-compose up -d
+```
+After that, run the workflow to load the data to GCP.
+
+3. Run dbt
+   
+Log in https://py308.us1.dbt.com/
+
+Set up connection to github and bigquery, run the ```dbt build``` in cloud IDE.
+
+4. Build dashboard
+
+Open [looker studio](https://lookerstudio.google.com/), add data scource, connect to big query, select the data transformed by dbt.
 
