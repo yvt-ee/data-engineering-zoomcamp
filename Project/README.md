@@ -17,7 +17,7 @@ Dataset: [Seattle Pet Licenses data](https://data.seattle.gov/City-Administratio
 
 
 Before Start: 
-use terraform to configure GCP
+use terraform to configure GCP: [terraform](https://github.com/yvt-ee/data-engineering-zoomcamp/tree/main/Project/terraform)
 
 use docker to compose kestra: [docker-compose.yml](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/DataIngestion-kestra/docker-compose.yml)
 
