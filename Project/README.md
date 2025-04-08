@@ -157,6 +157,8 @@ Link: https://lookerstudio.google.com/s/pw3ute7WaO8
 
 [Seattle_Pet_Licenses.pdf](https://github.com/yvt-ee/data-engineering-zoomcamp/blob/main/Project/Seattle_Pet_Licenses.pdf)
 
+![image](https://github.com/user-attachments/assets/a21a587a-2d5c-4554-8236-ae363487abcb)
+
 ## How to Run the Project
 
 1. Setup GCP Infrastructure
